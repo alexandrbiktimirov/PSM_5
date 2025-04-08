@@ -73,7 +73,7 @@ public class Main {
         chartPanel.setPreferredSize(new Dimension(600, 600));
         frame.add(chartPanel, BorderLayout.CENTER);
 
-        runButton.addActionListener(e -> {
+        runButton.addActionListener(_ -> {
             double dt = Double.parseDouble(timeStepField.getText());
             double totalTime = Double.parseDouble(String.valueOf((NUM_STEPS * DT)));
             int steps = (int)(totalTime / dt);
