@@ -100,6 +100,7 @@ public class Main {
             int i = 0;
             for (int t = 0; t < steps; t++) {
                 earthMoonDistance = Math.sqrt(Math.pow(xEarth - xMoon, 2) + Math.pow(yEarth - yMoon, 2));
+
                 double gravityForce = G * EARTH_MASS * MOON_MASS / (earthMoonDistance * earthMoonDistance);
                 double xGravityForce = (xEarth - xMoon) / earthMoonDistance * gravityForce;
                 double yGravityForce = (yEarth - yMoon) / earthMoonDistance * gravityForce;
@@ -113,6 +114,7 @@ public class Main {
                 double vyMoonMid = vyMoon + ayMoon * dt / 2;
                 double axMoonMid = xMoonMidForce / MOON_MASS;
                 double ayMoonMid = yMoonMidForce / MOON_MASS;
+
                 xMoon += vxMoonMid * dt;
                 yMoon += vyMoonMid * dt;
                 vxMoon += axMoonMid * dt;
@@ -140,8 +142,10 @@ public class Main {
         double yEarth = earthSunDistance;
         double vxEarth = earthVelocity;
         double vyEarth = 0;
+
         for (int t = 0; t < steps; t++) {
             earthSunDistance = Math.sqrt(xEarth * xEarth + yEarth * yEarth);
+
             double gravityForce = G * SUN_MASS * EARTH_MASS / (earthSunDistance * earthSunDistance);
             double xGravityForce = -xEarth / earthSunDistance * gravityForce;
             double yGravityForce = -yEarth / earthSunDistance * gravityForce;
@@ -155,6 +159,7 @@ public class Main {
             double vyEarthMid = vyEarth + ayEarth * dt / 2;
             double axEarthMid = xEarthMidForce / EARTH_MASS;
             double ayEarthMid = yEarthMidForce / EARTH_MASS;
+
             xEarth += vxEarthMid * dt;
             yEarth += vyEarthMid * dt;
             vxEarth += axEarthMid * dt;
@@ -162,6 +167,7 @@ public class Main {
             positions[t * 2] = xEarth / 10;
             positions[t * 2 + 1] = yEarth / 10;
         }
+
         return positions;
     }
 
